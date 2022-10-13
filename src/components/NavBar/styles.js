@@ -22,6 +22,7 @@ export const NavItem = styled.div`
   gap: 0.5rem;
   transition: .2s ease-in;
   cursor: pointer;
+  color: ${({ path, location }) => path === location ? "white" : "inherit"};
 
   &:hover {
     color: white;
