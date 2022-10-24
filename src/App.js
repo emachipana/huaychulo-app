@@ -1,8 +1,8 @@
-import Navbar from "./components/NavBar";
+import UnauthenticatedApp from "./UnauthenticatedApp";
 
 function App() {
   return (
-    <Navbar />
+    <UnauthenticatedApp />
   );
 }
 
