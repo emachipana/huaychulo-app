@@ -18,7 +18,7 @@ export const Container = styled.div`
   z-index: 2;
 `;
 
-const color = (isMove) => isMove ? colors.gray[800] : "#F5F5F5"; 
+const color = (isMove) => isMove ? colors.gray[800] : colors.white; 
 
 export const NavItem = styled.div`
   display: flex;
