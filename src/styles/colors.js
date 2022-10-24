@@ -7,6 +7,6 @@ export const colors = {
     300: "#b8b6b6",
     200: "#dbdbdb"
   },
-  green: "#61E0A0",
+  green: "#4BAF87",
   white: "#F5F5F5"
 }
