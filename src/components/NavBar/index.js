@@ -4,14 +4,26 @@ import { AiFillHome } from "react-icons/ai";
 import { IoRestaurantSharp } from "react-icons/io5"
 import { FaUserSecret } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Navbar() {
+  const [isMove, setIsMove] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
+  const handleClickMove = () => {
+    if(window.scrollY >= 80) return setIsMove(true);
+    setIsMove(false);
+  }
+
+  window.addEventListener("scroll", handleClickMove);
+
   return (
-    <Container>
+    <Container
+      isMove={isMove}
+    >
       <NavItem
+        isMove={isMove}
         onClick={() => navigate("/")}
         path="/"
         location={location.pathname}
@@ -22,6 +34,7 @@ function Navbar() {
         <Item>Inicio</Item>
       </NavItem>
       <NavItem
+        isMove={isMove}
         onClick={() => navigate("/carta")}
         path="/carta"
         location={location.pathname}
@@ -32,6 +45,7 @@ function Navbar() {
         <Item>Carta</Item>
       </NavItem>
       <NavItem
+        isMove={isMove}
         onClick={() => navigate("/login")}
         path="/login"
         location={location.pathname}

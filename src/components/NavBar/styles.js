@@ -1,31 +1,37 @@
 import styled from "@emotion/styled";
-import { fonts } from "../../styles";
+import { colors, fonts } from "../../styles";
 import { css } from "@emotion/react";
 
 export const Container = styled.div`
   width: 100%;
   display: flex;
+  max-height: 70px;
+  background-color: ${({ isMove }) => isMove ? "rgba(255, 255, 255, .9)" : "transparent"};
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  height: 10vh;
-  gap: 1rem;
-  position: sticky;
+  padding: 1rem;
+  gap: 2rem;
+  position: fixed;
   top: 0;
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, .2);
-  background-image: linear-gradient(to bottom, #000000, #3b3b3b, #777777, #b9b9b9, #F5F5F5);
+  transition: .3s ease-in;
+  box-shadow: ${({ isMove }) => isMove ? "0px 0px 2px 6px rgba(0, 0, 0, .3)" : "none"};
+  z-index: 2;
 `;
+
+const color = (isMove) => isMove ? colors.gray[800] : "#F5F5F5"; 
 
 export const NavItem = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   transition: .2s ease-in;
+  color: ${({ isMove }) => color(isMove)};
   cursor: pointer;
-  color: ${({ path, location }) => path === location ? "white" : "inherit"};
+  padding: 4px;
+  border-bottom: 2px solid ${({ path, location, isMove }) => path === location ? color(isMove) : "transparent"};
 
   &:hover {
-    color: white;
+    border-bottom: 2px solid ${({ isMove }) => color(isMove)};
   }
 `;
 
