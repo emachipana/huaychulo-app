@@ -1,11 +1,19 @@
+import { motion } from "framer-motion";
 import InputSearch from "../InputSearch";
-import { Container, Title } from "./styles";
+import { AnimateSection, Container, Title } from "./styles";
 
 function Hero() {
   return (
     <Container>
-      <Title>Encuentra el platillo perfecto</Title>
-      <InputSearch />
+      <AnimateSection
+        as={motion.div}
+        initial={{opacity: 0, scale: 0}}
+        animate={{opacity: 1, scale: 1}}
+        transition={{duration: 1}}
+      >
+        <Title>Encuentra el platillo perfecto</Title>
+        <InputSearch />
+      </AnimateSection>
     </Container>
   )
 }

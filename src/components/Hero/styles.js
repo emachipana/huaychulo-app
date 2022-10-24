@@ -7,18 +7,22 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
-  display: flex;
   height: 65vh;
   display: flex;
-  align-items: center;
   padding: 0 5rem;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
 
   @media screen and (max-width: 600px) {
     padding: 0 2rem;
   }
+`;
+
+export const AnimateSection = styled.section`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const Title = styled.h2`
