@@ -150,7 +150,7 @@ function SessionModal({ isOpen, onClose }) {
             <ModalFooter>
               <Button
                 disabled={!isValid || isLoading}
-                style={{fontWeight: 600, backgroundColor: colors.green, border: "none"}}
+                style={{fontWeight: 600, backgroundColor: colors.green[600], border: "none"}}
                 type="submit"
               >
                 {
