@@ -46,9 +46,11 @@ function AuthProvider({ children }) {
   }
 
   async function logout() {
+    setIsLoading(true);
     await session.logout();
     setUser(null);
     navigate("/");
+    setTimeout(() => setIsLoading(false), 500);
   }
 
   return (
