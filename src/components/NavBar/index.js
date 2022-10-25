@@ -7,9 +7,11 @@ import { HiMenuAlt3, HiOutlineHome } from "react-icons/hi";
 import { IoClose, IoRestaurantOutline } from "react-icons/io5";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { useState } from "react";
+import SessionModal from "../SessionModal";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
 
   const handleOpen = (to) => {
@@ -62,11 +64,18 @@ function NavBar() {
           Icon={AiOutlineExclamationCircle}
         />
         <Button
-          onClick={() => handleOpen("/login")}
+          onClick={() => {
+            setModal(!modal);
+            setIsOpen(!isOpen);
+          }}
         >
           Iniciar sesión
         </Button>
       </nav>
+      <SessionModal 
+        isOpen={modal}
+        onClose={() => setModal(!modal)}
+      />
     </Container>
   );
 }
