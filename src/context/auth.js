@@ -16,9 +16,9 @@ function AuthProvider({ children }) {
       try {
         const {_token, ...user} = await get("profile");
         setUser(user);
-        setIsLoading(false);
+        setTimeout(() => setIsLoading(false), 1000);
       }catch {
-        setIsLoading(false);
+        setTimeout(() => setIsLoading(false), 1000);
       }
     }
 
@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
     try {
       const response = await session.login(credentials);
       setUser(response);
-      navigate("/");
+      return response;
     }catch(e) {
       setError(e.message);
     }
@@ -39,7 +39,7 @@ function AuthProvider({ children }) {
     try{
       const response = await session.signup(data);
       setUser(response);
-      navigate("/");
+      return response;
     }catch(e) {
       setError(e.message);
     }
