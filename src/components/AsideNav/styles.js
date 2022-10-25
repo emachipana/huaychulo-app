@@ -109,6 +109,7 @@ export const Backdrop = styled.div`
   z-index: 1;
   opacity: 0;
   transition: .4s linear;
+  ${({ isOpen }) => !isOpen ? "pointer-events: none" : null};
 
   @media screen and (max-width: 630px) {
     opacity: ${({ isOpen }) => isOpen ? 1 : 0};
