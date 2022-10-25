@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
-import { Button, Container, IconStyle, Img, Logo } from "./styles";
-import { FaHotel } from "react-icons/fa";
+import { Button, Container, IconStyle } from "./styles";
 import { useNavigate } from "react-router-dom";
-import NavItem from "./nav-items";
+import NavItem from "./NavItem";
 import { HiMenuAlt3, HiOutlineHome } from "react-icons/hi";
 import { IoClose, IoRestaurantOutline } from "react-icons/io5";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import { useState } from "react";
 import SessionModal from "../SessionModal";
+import Logo from "./Logo";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,14 +23,9 @@ function NavBar() {
 
   return (
     <Container>
-      <Logo
-        onClick={() => navigate("/")}
-      >
-        <Img>
-          <FaHotel />
-        </Img>
-        Huaychulo
-      </Logo>
+      <Logo 
+        navigate={navigate}
+      />
       <section className="handle" onClick={() => setIsOpen(!isOpen)}>
         {
           isOpen

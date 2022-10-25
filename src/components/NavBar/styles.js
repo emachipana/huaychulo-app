@@ -42,7 +42,7 @@ export const Container = styled.div`
       width: 100%;
       height: 100vh;
       padding: 1rem;
-      opacity: .9;
+      opacity: .98;
     }
 
     .handle {
@@ -61,11 +61,12 @@ export const Logo = styled.section`
   align-items: center;
   gap: 4px;
   font-weight: 600;
+  color: ${({ color }) => color ? color : colors.gray[700]};
   cursor: pointer;
 `;
 
 export const Img = styled.div`
-  background-color: ${colors.green};
+  background-color: ${colors.green[600]};
   border-radius: 50%;
   padding: 0.5rem;
   display: flex;

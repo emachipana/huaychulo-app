@@ -41,10 +41,12 @@ function SessionModal({ isOpen, onClose }) {
     const doc_type = (values.document_type * 1) === 0 ? "dni" : "ruc";
     try {
       if(isLogin) {
-        await login(values);
+        const user = await login(values);
+        if(user) handleClose();
         setIsLoading(false);
         return;
       }
+      
       const userData = await getData(doc_type, values.document * 1);
       if(userData.message) throw new Error("Unexpected");
 
@@ -56,7 +58,8 @@ function SessionModal({ isOpen, onClose }) {
         last_name: doc_type === "dni" ? `${userData.apellidoPaterno} ${userData.apellidoMaterno}` : userData.razonSocial
       }
 
-      await signup(data);
+      const user = await signup(data);
+      if(user) handleClose();
       setIsLoading(false);
     }catch(e) {
       setError(e.message.includes("Unexpected") ? `No se encontraron resultados para el ${doc_type}` : e.message);
@@ -147,7 +150,7 @@ function SessionModal({ isOpen, onClose }) {
             <ModalFooter>
               <Button
                 disabled={!isValid || isLoading}
-                style={{fontWeight: 600, backgroundColor: colors.green, border: "none"}}
+                style={{fontWeight: 600, backgroundColor: colors.green[600], border: "none"}}
                 type="submit"
               >
                 {

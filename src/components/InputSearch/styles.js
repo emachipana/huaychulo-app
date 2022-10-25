@@ -5,16 +5,21 @@ export const Container = styled.label`
   position: relative;
   background-color: ${colors.white};
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, .5);
-  padding: 0.5rem 1.5rem;
-  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
   width: 100%;
 `;
 
 export const Form = styled.form`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    justify-content: end;
+  }
 `;
 
 export const FlexRow = styled.section`
