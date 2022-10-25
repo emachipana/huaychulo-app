@@ -18,7 +18,7 @@ export const Container = styled.div`
   transition: .1s ease-in;
   text-align: center;
   gap: 1rem;
-  color: ${colors.green};
+  color: ${colors.green[600]};
 
   &:hover {
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, .2);
@@ -34,7 +34,7 @@ export const Icons = styled.section`
 `;
 
 export const Img = styled.div`
-  background-color: ${colors.green};
+  background-color: ${colors.green[600]};
   color: white;
   display: flex;
   align-items: center;
