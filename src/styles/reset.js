@@ -25,4 +25,21 @@ export const reset = css`
     font-size: 1rem;
     background-color: ${colors.gray[200]};
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${colors.white};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 1.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, .6);
+  }
 `;

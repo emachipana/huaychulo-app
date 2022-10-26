@@ -33,12 +33,12 @@ function AsideNav() {
             isOpen
             ?
               <IoClose
-                size="30px"
+                size="34px"
                 color={colors.white}
               />
             :
               <HiMenuAlt3
-                size="30px"
+                size="34px"
                 color={colors.white}
               />
           }
