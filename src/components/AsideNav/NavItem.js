@@ -6,7 +6,7 @@ function NavItem({ Icon, name, navigate, to, logout, setIsOpen }) {
   const location = useLocation();
 
   const handleClick = () => {
-    setIsOpen(isOpen => !isOpen);
+    setIsOpen(false);
     if(logout) return logout();
     navigate(to);
   }
