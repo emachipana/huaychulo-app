@@ -10,7 +10,7 @@ export const Title = styled.h1`
 export const FlexRow = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;
   width: 100%;
   margin: 2rem auto;
 `;
@@ -33,4 +33,14 @@ export const LoaderStyle = css`
   position: fixed;
   top: 50%;
   right: 40%;
+`;
+
+export const Dishes = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem;
 `;
