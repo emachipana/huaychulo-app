@@ -14,7 +14,7 @@ function AuthAppAdmin() {
   const Section = styled.section`
     position: relative;
     height: 100%;
-    padding: 2rem 1rem;
+    padding: 2rem 1.5rem;
   `;
 
   return (
