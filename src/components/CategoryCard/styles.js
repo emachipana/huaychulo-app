@@ -27,11 +27,16 @@ export const Container = styled.div`
     null
   }
 
-  &:hover {
+  ${({ isHover }) => !isHover ?
+    `
     box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, .2);
     transform: translateY(-2px);
     background-color: ${colors.gray[500]};
     color: ${colors.white};
+    
+    ` 
+    :
+    null
   }
 `;
 
@@ -58,6 +63,7 @@ export const Options = styled.div`
   right: -15%;
   transition: .2s ease-in;
   display: flex;
+  z-index: 2;
   align-items: center;
   gap: 4px;
   opacity: ${({ isHover }) => isHover ? 1 : 0};
@@ -74,3 +80,7 @@ export const ButtonStyle = css`
   padding: 4px;
   z-index: 1;
 `;
+
+export const Wrapper = styled.div`
+  position: relative;
+`
