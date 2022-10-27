@@ -13,6 +13,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: end;
   padding: 1rem;
+
+  @media screen and (max-width: 420px){
+    gap: 0;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -34,6 +38,10 @@ export const IconContainer = styled.div`
 export const IconStyle = css`
   font-size: 24px;
   color: ${colors.gray[500]};
+
+  @media screen and (max-width: 420px){
+    font-size: 20px;
+  }
 `;
 
 export const ProfileContainer = styled.div`
@@ -50,6 +58,11 @@ export const ProfilePhoto = styled.img`
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, .2);
+
+  @media screen and (max-width: 420px){
+    width: 35px;
+    height: 35px;
+  }
 `;
 
 export const CountNotifications = styled.span`
@@ -77,7 +90,13 @@ export const Notifications = styled.div`
   background-color: ${colors.white};
   position: fixed;
   top: 70px;
+  z-index: 1;
+  right: 15%;
   transition: .2s linear;
   opacity: ${({ isOpen }) => isOpen ? 1 : 0};
   ${({ isOpen }) => !isOpen ? "pointer-events: none;" : null}
+
+  @media screen and (max-width: 520px){
+    right: 40%;
+  }
 `;
