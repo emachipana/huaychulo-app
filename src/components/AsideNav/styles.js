@@ -114,13 +114,13 @@ export const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, .5);
   width: 100vw;
   height: 100vh;
-  z-index: 2;
+  z-index: 3;
   opacity: 0;
   transition: .4s linear;
   pointer-events: none;
 
   @media screen and (max-width: 700px) {
     opacity: ${({ isOpen }) => isOpen ? 1 : 0};
-    ${({ isOpen }) => !isOpen ? "pointer-events: none" : null};
+    pointer-events: ${({ isOpen }) => isOpen ? "auto" : "none"};
   }
 `;

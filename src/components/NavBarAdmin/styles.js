@@ -10,6 +10,7 @@ export const Container = styled.div`
   background-color: ${colors.white};
   display: flex;
   gap: 0.6rem;
+  z-index: 2;
   align-items: center;
   justify-content: end;
   padding: 1rem;
