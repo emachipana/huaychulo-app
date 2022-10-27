@@ -28,11 +28,11 @@ export const Container = styled.aside`
     align-items: center;
     justify-content: center;
     position: ${({isOpen}) => isOpen ? "absolute" : "relative"};
-    top: ${({isOpen}) => isOpen ? "8px" : "-2px"};
+    top: ${({isOpen}) => isOpen ? "5px" : "-2px"};
     left:  ${({isOpen}) => isOpen ? "8px" : "-2px"};
   }
 
-  @media screen and (max-width: 630px) {
+  @media screen and (max-width: 700px) {
     height: ${({isOpen}) => isOpen ? "100vh" : "60px"};
     width: ${({isOpen}) => isOpen ? "200px" : "70px"};
     position: fixed;
@@ -87,7 +87,7 @@ export const NavSection = styled.section`
   font-weight: 600;
   font-size: 17px;
 
-  @media screen and (max-width: 820px) {
+  @media screen and (max-width: 700px) {
     font-size: 15px;
   }
 `;
@@ -96,7 +96,7 @@ export const IconStyle = css`
   font-size: 20px;
   position: relative;
   top: -2px;
-  @media screen and (max-width: 820px) {
+  @media screen and (max-width: 700px) {
     font-size: 18px;
   }
 `;
@@ -114,12 +114,13 @@ export const Backdrop = styled.div`
   background-color: rgba(0, 0, 0, .5);
   width: 100vw;
   height: 100vh;
-  z-index: 1;
+  z-index: 2;
   opacity: 0;
   transition: .4s linear;
-  ${({ isOpen }) => !isOpen ? "pointer-events: none" : null};
+  pointer-events: none;
 
-  @media screen and (max-width: 630px) {
+  @media screen and (max-width: 700px) {
     opacity: ${({ isOpen }) => isOpen ? 1 : 0};
+    ${({ isOpen }) => !isOpen ? "pointer-events: none" : null};
   }
 `;
