@@ -1,9 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { Formik } from "formik";
 import { useState } from "react";
-import { Modal, Button, ModalHeader, ModalBody, FormGroup, Label, Input, FormFeedback, Alert, ModalFooter, Spinner } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, Alert } from "reactstrap";
 import { post, update } from "../../services";
-import { AlertStyle, ButtonStyle } from "../SessionModal/styles";
+import InputForm from "../InputForm";
+import { AlertStyle } from "../SessionModal/styles";
+import FooterForm from "./FooterForm";
 
 function CategoryFormModal({ editableName, setParent, handleClose, isOpen, title, setEditableName }) {
   const [error, setError] = useState(null);
@@ -81,29 +83,16 @@ function CategoryFormModal({ editableName, setParent, handleClose, isOpen, title
         }) => (
           <form onSubmit={handleSubmit}>
             <ModalBody>
-              <FormGroup>
-                <Label
-                  style={{fontWeight: 500}}
-                  htmlFor="name"
-                >
-                  Nombre
-                </Label>
-                <Input 
-                  id="name"
-                  name="name"
-                  placeholder="Postres..."
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  invalid={errors.name && touched.name}
-                  valid={!errors.name && touched.name}
-                />
-                {
-                  errors.name && touched.name && (
-                    <FormFeedback>{ errors.name }</FormFeedback>
-                  )
-                }
-              </FormGroup>
+              <InputForm
+                id="name"
+                label="Nombre"
+                placeholder="Postres..."
+                value={values.name}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                error={errors.name}
+                touched={touched.name}
+              />
               {
                 error
                 ?
@@ -117,45 +106,12 @@ function CategoryFormModal({ editableName, setParent, handleClose, isOpen, title
                   null
               }
             </ModalBody>
-            <ModalFooter>
-            <Button
-                disabled={!isValid || isLoading}
-                css={ButtonStyle}
-                type="submit"
-              >
-                {
-                  isLoading
-                  ?
-                  <>
-                    <Spinner
-                      size="sm"
-                    />
-                    {" "}
-                    {
-                      editableName
-                      ?
-                      "Actualizando..."
-                      :
-                      "Agregando..."
-                    }
-                  </>
-                  :
-                  editableName
-                  ?
-                  "Actualizar"
-                  :
-                  "Agregar"
-                }
-              </Button>
-              {" "}
-              <Button
-                style={{fontWeight: 600}}
-                onClick={onClose}
-                color="danger"
-              >
-                Cerrar
-              </Button>
-            </ModalFooter>
+            <FooterForm 
+              editableItem={editableName}
+              handleClose={onClose}
+              isLoading={isLoading}
+              isValid={isValid}
+            />
           </form>
         )}
       </Formik>
