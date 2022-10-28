@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import { ButtonStyle, Container, Description, FlexRow, IconStyle, Info, Name, Photo, Section } from "./styles";
+import { ButtonStyle, Container, ContainerScroll, Description, FlexRow, IconStyle, Info, Name, Photo, Section } from "./styles";
 import { TbCoffee } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { GiJigsawBox } from "react-icons/gi";
@@ -7,7 +7,17 @@ import { Button } from "reactstrap";
 import { TiEdit } from "react-icons/ti";
 import { HiOutlineTrash } from "react-icons/hi";
 
-function DishCard({ photo, name, description, quantity, price, waiting }) {
+function DishCard({ id, photo, name, description, quantity, price, waiting, setOpen, setEditableItem }) {
+  const handleEditOpen = () => {
+    setOpen(modal => ({...modal, edit: true}));
+    setEditableItem({ id: id });
+  }
+
+  const handleDeleteOpen = () => {
+    setOpen(modal => ({...modal, delete: true}));
+    setEditableItem({ id: id });
+  }
+
   return (
     <Container>
       <Photo 
@@ -16,7 +26,9 @@ function DishCard({ photo, name, description, quantity, price, waiting }) {
         />
       <Info>
         <Name>{ name }</Name>
-        <Description>{ description }</Description>
+        <ContainerScroll>
+          <Description>{ description }</Description>
+        </ContainerScroll>
         <FlexRow>
           <Section>
             <RiMoneyDollarCircleFill
@@ -44,6 +56,7 @@ function DishCard({ photo, name, description, quantity, price, waiting }) {
           style={{alignSelf: "end"}}
         >
           <Button
+            onClick={handleEditOpen}
             css={ButtonStyle}
             color="warning"
           >
@@ -54,6 +67,7 @@ function DishCard({ photo, name, description, quantity, price, waiting }) {
             />
           </Button>
           <Button
+            onClick={handleDeleteOpen}
             css={ButtonStyle}
             color="danger"
           >

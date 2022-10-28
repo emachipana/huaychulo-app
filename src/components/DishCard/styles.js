@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 225px;
   height: 300px;
   padding: 0.5rem 0.7rem;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
   background-color: ${colors.white};
   position: relative;
   border-radius: 1.2rem;
@@ -79,4 +79,10 @@ export const IconStyle = css`
 export const ButtonStyle = css`
   width: 30px;
   height: 30px;
+`;
+
+export const ContainerScroll = styled.div`
+  height: 60px;
+  width: 100%;
+  overflow: auto;
 `;
