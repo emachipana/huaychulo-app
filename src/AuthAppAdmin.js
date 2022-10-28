@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AsideNav from "./components/AsideNav";
 import NavBarAdmin from "./components/NavBarAdmin";
 import DishesPage from "./pages/admin/dishes";
+import TablesPage from "./pages/admin/tables";
 
 function AuthAppAdmin() {
   const Container = styled.div`
@@ -25,7 +26,8 @@ function AuthAppAdmin() {
         <Section>
           <Routes>
             <Route index path="/" element={<h1>Hola desde admin</h1>} />
-            <Route path="/platillos" element={<DishesPage />} />
+            <Route path="/platillos" element={<DishesPage /> } />
+            <Route path="/mesas" element={<TablesPage /> } />
           </Routes>
         </Section>
       </Container>
