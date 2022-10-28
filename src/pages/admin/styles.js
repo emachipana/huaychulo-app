@@ -40,7 +40,7 @@ export const Dishes = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   padding: 1rem;
 `;

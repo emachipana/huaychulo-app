@@ -9,6 +9,7 @@ import CategoryFormModal from "../../components/CategoryFormModal";
 import DeleteModal from "../../components/DeleteModal";
 import { Button } from "../../components/NavBar/styles";
 import DishCard from "../../components/DishCard";
+import DishFormModal from "../../components/DishFormModal";
 
 function DishesPage() {
   const [categories, setCategories] = useState([]);
@@ -16,7 +17,8 @@ function DishesPage() {
   const [currentCategory, setCurrentCategory] = useState("Todos");
   const [isLoading, setIsLoding] = useState(true);
   const [categoryModal, setCategoryModal] = useState({ edit: false, delete: false });
-  const [editableCategory, setEditableCategory] = useState(null);
+  const [dishModal, setDishModal] = useState({ edit: false, delete: false });
+  const [editableItem, setEditableItem] = useState(null);
 
   useEffect(() => {
     async function fetch() {
@@ -30,7 +32,16 @@ function DishesPage() {
     fetch();
   }, []);
 
-  console.log(dataDishes.dishes);
+  const handleDeleteCategory = (id) => {
+    setCategories(categories => categories.filter(category => category.id !== id));
+  }
+
+  const handleDeleteDish = (id) => {
+    setDataDishes(dishes => {
+      const newDishes = dishes.backup.filter(dish => dish.id !== id);
+      return { dishes: newDishes, backup: newDishes }
+    });
+  }
 
   return (
     <>
@@ -54,7 +65,7 @@ function DishesPage() {
                     id={category.id}
                     setOpen={setCategoryModal}
                     type="edit"
-                    setEditableName={setEditableCategory}
+                    setEditableName={setEditableItem}
                     setParent={setDataDishes}
                     key={category.id}
                     name={category.name}
@@ -73,6 +84,7 @@ function DishesPage() {
             </Categories>
             <FlexRow>
               <Button
+                onClick={() => setDishModal(modal => ({...modal, edit: !modal.edit}))}
                 style={{alignSelf: "end"}}
               >
                 Agregar Platillo
@@ -83,33 +95,56 @@ function DishesPage() {
                 dataDishes.dishes.map(dish => (
                   <DishCard
                     key={dish.id}
+                    id={dish.id}
                     quantity={dish.quantity}
                     name={dish.name}
                     photo={dish.image}
                     description={dish.description}
                     price={dish.price}
                     waiting={dish.waiting_time}
+                    setOpen={setDishModal}
+                    setEditableItem={setEditableItem}
                   />
                 ))
               }
             </Dishes>
             <CategoryFormModal 
               handleClose={() => setCategoryModal(modal => ({...modal, edit: !modal.edit}))}
-              editableName={editableCategory}
+              editableName={editableItem}
               isOpen={categoryModal.edit}
               setParent={setCategories}
-              title={editableCategory ? "Editar" : "Agregar"}
-              setEditableName={setEditableCategory}
+              title={editableItem ? "Editar" : "Agregar"}
+              setEditableName={setEditableItem}
+            />
+            <DishFormModal 
+              categories={categories}
+              dishes={dataDishes.backup}
+              editableItem={editableItem}
+              isOpen={dishModal.edit}
+              onClose={() => setDishModal(modal => ({...modal, edit: !modal.edit}))}
+              setParent={setDataDishes}
+              setEditableItem={setEditableItem}
+              title={editableItem ? "Editar" : "Agregar"}
             />
             <DeleteModal 
               title="categoría"
               description="¿Estas seguro de eliminar esta categoría? Recuerda que si eliminas esta categoría tambien se eliminarán los platillos asociados."
               endpoint="categories"
-              id={editableCategory?.id}
+              id={editableItem?.id}
               handleClose={() => setCategoryModal(modal => ({...modal, delete: !modal.delete}))}
               isOpen={categoryModal.delete}
-              setName={setEditableCategory}
-              setParent={setCategories}
+              setName={setEditableItem}
+              handleSetDelete={handleDeleteCategory}
+            />
+            <DeleteModal 
+              title="platillo"
+              description="¿Estas seguro de eliminar este platillo? Recuerda que si eliminas este platillo no habrá vuelta a atrás."
+              id={editableItem?.id}
+              handleClose={() => setDishModal(modal => ({...modal, delete: !modal.delete}))}
+              isOpen={dishModal.delete}
+              setName={setEditableItem}
+              handleSetDelete={handleDeleteDish}
+              endpoint="dishes"
             />
           </>
       }
