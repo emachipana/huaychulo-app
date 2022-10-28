@@ -1,4 +1,5 @@
 import { FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import InputForm from "../InputForm";
 
 function SignUpForm({ values, handleChange, handleBlur, errors, touched }) {
   return (
@@ -30,53 +31,27 @@ function SignUpForm({ values, handleChange, handleBlur, errors, touched }) {
           )
         }
       </FormGroup>
-      <FormGroup>
-        <Label
-          style={{fontWeight: 500}}
-          htmlFor="document"
-        >
-          Documento
-        </Label>
-        <Input 
-          id="document"
-          name="document"
-          placeholder="documento..."
-          value={values.document}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          invalid={errors.document && touched.document}
-          valid={!errors.document && touched.document}
-        />
-        {
-          errors.document && touched.document && (
-            <FormFeedback>{ errors.document }</FormFeedback>
-          )
-        }
-      </FormGroup>
-      <FormGroup>
-        <Label
-          style={{fontWeight: 500}}
-          htmlFor="password"
-        >
-          Contraseña
-        </Label>
-        <Input 
-          id="password"
-          type="password"
-          name="password"
-          placeholder="*********"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          invalid={errors.password && touched.password}
-          valid={!errors.password && touched.password}
-        />
-        {
-          errors.password && touched.password && (
-            <FormFeedback>{ errors.password }</FormFeedback>
-          )
-        }
-      </FormGroup>
+      <InputForm
+        id="document"
+        label="Document(*usuario)"
+        placeholder="usuario..."
+        value={values.document}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+        error={errors.document}
+        touched={touched.document}
+      />
+      <InputForm 
+        id="password"
+        label="Contraseña"
+        type="password"
+        placeholder="*******"
+        value={values.password}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+        error={errors.password}
+        touched={touched.password}
+      />
     </>
   );
 }
