@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader, Spinner } from "reactstrap";
 import { destroy } from "../../services";
 
-function DeleteModal({ id, handleClose, title, description, setParent, isOpen, endpoint, setName }) {
+function DeleteModal({ id, handleClose, title, description, handleSetDelete, isOpen, endpoint, setName }) {
   const [isLoading, setIsLoading] = useState(false);
   
   const onClose = () => {
@@ -14,7 +14,7 @@ function DeleteModal({ id, handleClose, title, description, setParent, isOpen, e
     setIsLoading(true);
     try {
       await destroy(endpoint, id);
-      setParent(data => data.filter(i => i.id !== id));
+      handleSetDelete(id);
       setTimeout(() => setIsLoading(false), 500);
       onClose();
     }catch(e) {
