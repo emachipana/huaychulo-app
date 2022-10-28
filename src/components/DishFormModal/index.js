@@ -52,21 +52,15 @@ function DishFormModal({editableItem, dishes, onClose, categories, setParent, is
         const data = {
           ...values,
           category_id: values.category_id * 1,
-          price: values.price * 1,
-          quantity: values.quantity * 1,
-          waiting_time: values.waiting_time * 1,
           image: photo_url
         }
 
         const response = await post("dishes", data);
-        setParent(data => ({dishes: [...data.dishes, response], backup: [...data.backup, response]}));
+        setParent(data => ({main: [...data.main, response], backup: [...data.backup, response]}));
       }else {
         let data = {
           ...values,
           category_id: values.category_id * 1,
-          price: values.category_id * 1,
-          quantity: values.quantity * 1,
-          waiting_time: values.waiting_time * 1
         }
 
         if(image) {
@@ -79,7 +73,7 @@ function DishFormModal({editableItem, dishes, onClose, categories, setParent, is
           const newDishes = data.backup.map(dish => dish);
           newDishes[position] = response;
           
-          return { dishes: newDishes, backup: newDishes };
+          return { main: newDishes, backup: newDishes };
         });
       }
 

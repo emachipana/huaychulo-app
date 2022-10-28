@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 import { colors } from "../../styles";
 
 export const Container = styled.div`
-  width: 225px;
-  height: 300px;
-  padding: 0.5rem 0.7rem;
+  width:  ${({ table }) => table ? 200 : 225}px;
+  height: ${({ table }) => table ? 255 : 300}px;
+  padding:  ${({ table }) => table ? "0.5rem 1rem" : "0.5rem 0.7rem" };
   margin-top: 3rem;
   background-color: ${colors.white};
   position: relative;

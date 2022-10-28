@@ -13,7 +13,7 @@ import DishFormModal from "../../components/DishFormModal";
 
 function DishesPage() {
   const [categories, setCategories] = useState([]);
-  const [dataDishes, setDataDishes] = useState({ dishes: [], backup: [] });
+  const [dataDishes, setDataDishes] = useState({ main: [], backup: [] });
   const [currentCategory, setCurrentCategory] = useState("Todos");
   const [isLoading, setIsLoding] = useState(true);
   const [categoryModal, setCategoryModal] = useState({ edit: false, delete: false });
@@ -25,7 +25,7 @@ function DishesPage() {
       const catResponse = await get("categories");
       const dishResponse = await get("dishes");
       setCategories(catResponse);
-      setDataDishes({ dishes: dishResponse, backup: dishResponse });
+      setDataDishes({ main: dishResponse, backup: dishResponse });
       setTimeout(() => setIsLoding(false), 500);
     }
 
@@ -39,7 +39,7 @@ function DishesPage() {
   const handleDeleteDish = (id) => {
     setDataDishes(dishes => {
       const newDishes = dishes.backup.filter(dish => dish.id !== id);
-      return { dishes: newDishes, backup: newDishes }
+      return { main: newDishes, backup: newDishes }
     });
   }
 
@@ -58,19 +58,21 @@ function DishesPage() {
                 setCategory={setCurrentCategory}
                 currentCategory={currentCategory}
                 name="Todos"
+                all
               />
               {
                 categories.map(category => (
                   <CategoryCard
                     id={category.id}
                     setOpen={setCategoryModal}
-                    type="edit"
                     setEditableName={setEditableItem}
                     setParent={setDataDishes}
                     key={category.id}
                     name={category.name}
                     setCategory={setCurrentCategory}
                     currentCategory={currentCategory}
+                    filter={(dish) => dish.category_name === category.name}
+                    editable
                   />
                 ))
               }
@@ -92,7 +94,7 @@ function DishesPage() {
             </FlexRow>
             <Dishes>
               {
-                dataDishes.dishes.map(dish => (
+                dataDishes.main.map(dish => (
                   <DishCard
                     key={dish.id}
                     id={dish.id}

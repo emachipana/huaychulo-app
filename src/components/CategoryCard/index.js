@@ -6,13 +6,13 @@ import { TiEdit } from "react-icons/ti";
 import { HiOutlineTrash } from "react-icons/hi";
 import { colors } from "../../styles";
 
-function CategoryCard({ id, name, setParent, setCategory, currentCategory, setOpen, setEditableName }) {
+function CategoryCard({ id, name, all, setParent, setCategory, currentCategory, filter, setOpen, setEditableName, editable }) {
   const [isHover, setIsHover] = useState(false);
 
   const handleSet = () => {
     setCategory(name);
-    if(name === "Todos") return setParent(data => ({...data, dishes: data.backup}));
-    setParent(data => ({...data, dishes: data.backup.filter(dish => dish.category_name === name)}));
+    if(all) return setParent(data => ({...data, main: data.backup}));
+    setParent(data => ({...data, main: data.backup.filter(element => filter(element))}));
   }
 
   const handleEditOpen = () => {
@@ -37,7 +37,7 @@ function CategoryCard({ id, name, setParent, setCategory, currentCategory, setOp
         { name }
       </Container>
         {
-          name === "Todos"
+          !editable
           ?
             null
           :
