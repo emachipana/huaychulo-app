@@ -1,11 +1,12 @@
+/** @jsxImportSource @emotion/react */
 import { Formik } from "formik";
 import { useState } from "react";
 import { Alert, Button, Modal, ModalBody, ModalFooter, ModalHeader, Spinner } from "reactstrap";
 import { useAuth } from "../../context/auth";
 import getData from "../../services/sunat";
-import { colors } from "../../styles";
 import LoginForm from "./LoginForm";
 import SignUpForm from "./SignUpForm";
+import { AlertStyle, ButtonStyle } from "./styles";
 import validate from "./validate";
 
 function SessionModal({ isOpen, onClose }) {
@@ -138,7 +139,7 @@ function SessionModal({ isOpen, onClose }) {
                 error
                 ?
                 <Alert
-                  style={{fontWeight: 600, textAlign: "center"}}
+                  css={AlertStyle}
                   color="danger"
                 > 
                   { error.replaceAll('"', "").includes("has already been taken") ? "Este usuario ya existe" : error.replaceAll('"', "") }
@@ -150,7 +151,7 @@ function SessionModal({ isOpen, onClose }) {
             <ModalFooter>
               <Button
                 disabled={!isValid || isLoading}
-                style={{fontWeight: 600, backgroundColor: colors.green[600], border: "none"}}
+                css={ButtonStyle}
                 type="submit"
               >
                 {

@@ -27,7 +27,8 @@ export const reset = css`
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {

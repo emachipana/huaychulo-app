@@ -5,7 +5,6 @@ import { colors } from "../../styles";
 import { AiFillHome } from "react-icons/ai";
 import { RiRestaurantLine, RiReservedFill } from "react-icons/ri";
 import { IoClose, IoFastFoodSharp } from "react-icons/io5";
-import { MdCategory } from "react-icons/md";
 import { GoCalendar } from "react-icons/go";
 import { FaUserAstronaut } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
@@ -74,13 +73,6 @@ function AsideNav() {
         />
         <Hr />
         <Title>Gestionar</Title>
-        <NavItem
-          setIsOpen={setIsOpen} 
-          Icon={MdCategory}
-          name="Categorías"
-          navigate={navigate}
-          to="/categorias"
-        />
         <NavItem
           setIsOpen={setIsOpen} 
           Icon={IoFastFoodSharp}
