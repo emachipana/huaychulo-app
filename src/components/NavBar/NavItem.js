@@ -1,8 +1,9 @@
 import { Item as Container} from "./styles";
 
-function NavItem({ navigate, to, name, Icon }) {
+function NavItem({ location, navigate, to, name, Icon }) {
   return (
     <Container
+      active={location === to}
       onClick={() => navigate(to)}
     >
       <Icon

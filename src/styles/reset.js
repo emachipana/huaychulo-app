@@ -37,7 +37,7 @@ export const reset = css`
 
   ::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, .5);
-    border-radius: 1.5rem;
+    border-radius: 2rem;
   }
 
   ::-webkit-scrollbar-thumb:hover {
