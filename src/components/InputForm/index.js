@@ -1,6 +1,8 @@
+/** @jsxImportSource @emotion/react */
 import { FormFeedback, FormGroup, Input, Label } from "reactstrap";
+import { InputStyle } from "../ProfileForm/styles";
 
-function InputForm({id, label, placeholder, type, value, handleChange, handleBlur, error, touched}) {
+function InputForm({id, label, placeholder, type, value, handleChange, handleBlur, error, touched, disabled}) {
   return (
     <FormGroup>
       <Label
@@ -9,9 +11,11 @@ function InputForm({id, label, placeholder, type, value, handleChange, handleBlu
       >
         { label }
       </Label>
-      <Input 
+      <Input
+        css={InputStyle}
         id={id}
         name={id}
+        disabled={disabled}
         type={type || "text"}
         placeholder={placeholder}
         value={value}
