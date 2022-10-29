@@ -1,10 +1,10 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { colors } from "../../styles";
+import { colors, fonts } from "../../styles";
 
 export const Container = styled.div`
   background-color: ${colors.white};
-  opacity: .9;
+  opacity: .98;
   width: 100%;
   height: 70px;
   z-index: 5;
@@ -84,6 +84,7 @@ export const Item = styled.div`
   border-radius: 14px;
   transition: .2s linear;
   cursor: pointer;
+  background-color: ${({active}) => active ? colors.gray[200] : "transparent"};
 
   &:hover {
     background-color: ${colors.gray[200]};
@@ -113,4 +114,37 @@ export const Button = styled.button`
 export const IconStyle = css`
   font-size: 30px;
   cursor: pointer;
+`;
+
+export const Name = styled.h3`
+  text-transform: capitalize;
+  font-size: 17px;
+  font-weight: 600;
+  font-family: ${fonts.primary};
+  color: ${colors.gray[700]};
+`;
+
+export const PopoverSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+`
+
+export const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: .2rem 0;
+  font-size: 1rem;
+  font-family: ${fonts.primary};
+  font-weight: 500;
+  color: ${colors.gray[700]};
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: .2s ease-in;
+
+  &:hover {
+    background-color: ${colors.gray[200]};
+  }
 `;
