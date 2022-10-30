@@ -7,7 +7,7 @@ import { Button } from "reactstrap";
 import { TiEdit } from "react-icons/ti";
 import { HiOutlineTrash } from "react-icons/hi";
 
-function DishCard({ id, photo, name, description, quantity, price, waiting, setOpen, setEditableItem }) {
+function DishCard({ id, photo, name, isClient, description, quantity, price, waiting, setOpen, setEditableItem }) {
   const handleEditOpen = () => {
     setOpen(modal => ({...modal, edit: true}));
     setEditableItem({ id: id });
@@ -19,12 +19,16 @@ function DishCard({ id, photo, name, description, quantity, price, waiting, setO
   }
 
   return (
-    <Container>
+    <Container
+      isClient={isClient}
+    >
       <Photo 
         src={photo}
         alt="photo-dish"
         />
-      <Info>
+      <Info
+        isClient={isClient}
+      >
         <Name>{ name }</Name>
         <ContainerScroll>
           <Description>{ description }</Description>
@@ -49,34 +53,43 @@ function DishCard({ id, photo, name, description, quantity, price, waiting, setO
             { quantity }
           </Section>
         </FlexRow>
-        <hr 
-          style={{width: "100%", margin: "0.5rem"}}
-        />
-        <Section
-          style={{alignSelf: "end"}}
-        >
-          <Button
-            onClick={handleEditOpen}
-            css={ButtonStyle}
-            color="warning"
-          >
-            <TiEdit 
-              size="20px"
-              color="#F5F5F5"
-              style={{position: "relative", left: "-200%", top: "-30%"}}
-            />
-          </Button>
-          <Button
-            onClick={handleDeleteOpen}
-            css={ButtonStyle}
-            color="danger"
-          >
-            <HiOutlineTrash 
-              size="20px"
-              style={{position: "relative", left: "-200%", top: "-30%"}}
-            />
-          </Button>
-        </Section>
+        {
+          isClient
+          ?
+            null
+          :
+            <>
+            
+              <hr 
+                style={{width: "100%", margin: "0.5rem"}}
+              />
+              <Section
+                style={{alignSelf: "end"}}
+              >
+                <Button
+                  onClick={handleEditOpen}
+                  css={ButtonStyle}
+                  color="warning"
+                >
+                  <TiEdit 
+                    size="20px"
+                    color="#F5F5F5"
+                    style={{position: "relative", left: "-200%", top: "-30%"}}
+                  />
+                </Button>
+                <Button
+                  onClick={handleDeleteOpen}
+                  css={ButtonStyle}
+                  color="danger"
+                >
+                  <HiOutlineTrash 
+                    size="20px"
+                    style={{position: "relative", left: "-200%", top: "-30%"}}
+                  />
+                </Button>
+              </Section>
+            </>
+        }
       </Info>
     </Container>
   );
