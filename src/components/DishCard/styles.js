@@ -4,7 +4,7 @@ import { colors } from "../../styles";
 
 export const Container = styled.div`
   width:  ${({ table }) => table ? 200 : 225}px;
-  height: ${({ table }) => table ? 255 : 300}px;
+  height: ${({ table, isClient }) => table || isClient ? 262 : 310}px;
   padding:  ${({ table }) => table ? "0.5rem 1rem" : "0.5rem 0.7rem" };
   margin-top: 3rem;
   background-color: ${colors.white};
@@ -34,7 +34,7 @@ export const Photo = styled.img`
 `;
 
 export const Info = styled.div`
-  margin-top: -30%;
+  margin-top: ${({ isClient }) => isClient ? -24 : -30}%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -60,6 +60,7 @@ export const FlexRow = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 7px;
+  margin: 6px 0;
 `;
 
 export const Section = styled.section`
