@@ -28,7 +28,9 @@ function NavBar({ modal, setModal }) {
   }
 
   return (
-    <Container>
+    <Container
+      location={location.pathname}
+    >
       <Logo 
         navigate={navigate}
       />

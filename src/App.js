@@ -7,6 +7,7 @@ import Loader from "./components/Loader";
 import Footer from "./components/Footer";
 import MenuPage from "./pages/client/menu";
 import { useState } from "react";
+import ProfilePage from "./pages/admin/profile";
 
 function App() {
   const { user, isLoading } = useAuth();
@@ -28,6 +29,13 @@ function App() {
           <Routes>
             <Route index path="/" element={<HomePage />} />
             <Route path="/carta" element={<MenuPage setModal={setModal} />} />
+            {
+              user
+              ?
+              <Route path="/perfil" element={<ProfilePage />} />
+              :
+              null
+            }
           </Routes>
           <Footer />
         </>  

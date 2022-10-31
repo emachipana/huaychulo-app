@@ -14,5 +14,6 @@ export const Form = styled.form`
 export const InputStyle = css`
   &:disabled {
     cursor: not-allowed;
+    text-transform: capitalize;
   }
 `;

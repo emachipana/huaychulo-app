@@ -9,6 +9,7 @@ export const Container = styled.div`
   height: 70px;
   z-index: 5;
   position: sticky;
+  margin-bottom: ${({ location }) => location === "/perfil" ? "2rem" : 0};
   top: 0;
   padding: 1rem 3rem;
   display: flex;

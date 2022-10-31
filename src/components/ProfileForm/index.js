@@ -55,7 +55,7 @@ function ProfileForm() {
           <InputForm 
             id="name"
             label="Nombre"
-            value={values.name}
+            value={values.name.toLowerCase()}
             disabled
           />
           <InputForm 
@@ -64,6 +64,18 @@ function ProfileForm() {
             value={values.document}
             disabled
           />
+          {
+            user.user_type === "client"
+            ?
+              <InputForm 
+                id="intake"
+                label="Consumo"
+                value={`S/. ${user.intake}.00`}
+                disabled
+              />
+            :
+              null
+          }
           <InputForm 
             id="newPassword"
             label="Nueva contraseña"
