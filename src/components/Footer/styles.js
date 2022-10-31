@@ -11,6 +11,10 @@ export const Container = styled.div`
   gap: 3rem;
   flex-wrap: wrap;
   position: relative;
+
+  @media screen and (max-width: 1120px) {
+    gap: 0;
+  }
 `;
 
 export const Section = styled.section`
