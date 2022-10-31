@@ -13,7 +13,7 @@ import TableCard from "../../components/TableCard";
 import OrderComplete from "../../components/OrderComplete";
 
 function MenuPage({ setModal }) {
-  const { user, setError } = useAuth();
+  const { user, setError, setUser } = useAuth();
   const [categories, setCategories] = useState([]);
   const [dataDishes, setDataDishes] = useState({ main: [], backup: [] });
   const [tables, setTables] = useState([]);
@@ -55,6 +55,7 @@ function MenuPage({ setModal }) {
         const response = await post("orders", data);
         setData({...data, total: response.total});
         setSelectableMode("success");
+        setUser(user => ({...user, intake: user.intake + response.total}));
       }catch(e) {
         setSelectableMode("error");
       }
