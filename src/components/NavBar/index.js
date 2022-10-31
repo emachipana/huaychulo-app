@@ -14,9 +14,8 @@ import Logo from "./Logo";
 import { ProfilePhoto } from "../NavBarAdmin/styles";
 import { PopoverBody, UncontrolledPopover } from "reactstrap";
 
-function NavBar() {
+function NavBar({ modal, setModal }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [modal, setModal] = useState(false);
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();

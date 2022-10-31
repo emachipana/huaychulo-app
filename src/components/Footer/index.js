@@ -21,7 +21,7 @@ function Footer() {
           con hermosos paisajes y juegos para los 
           mas pequeños, ademas de nuestra variedad
           de platillos preparados por los mejores
-          chef's del valle del mantaro
+          chef's del valle del mantaro.
         </Text>
       </Section>
       <Section>

@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 import { colors } from "../../styles";
 
 export const Container = styled.div`
-  width:  ${({ table }) => table ? 200 : 225}px;
-  height: ${({ table, isClient }) => table || isClient ? 262 : 310}px;
+  width: 230px;
+  height: ${({ table, isClient }) => table || isClient ? ( isClient && table ? 220 : 255) : 310}px;
   padding:  ${({ table }) => table ? "0.5rem 1rem" : "0.5rem 0.7rem" };
-  margin-top: 3rem;
+  margin-top: 5rem;
   background-color: ${colors.white};
   position: relative;
   border-radius: 1.2rem;
@@ -16,6 +16,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 2px solid ${({ isSelect }) => isSelect ? "#035afc" : colors.white};
 
   &:hover {
     transform: translateY(-4px);
@@ -25,16 +26,17 @@ export const Container = styled.div`
 
 export const Photo = styled.img`
   border-radius: 50%;
-  width: 145px;
-  height: 145px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  position: relative;
+  position: absolute;
   top: -25%;
   box-shadow: rgb(0 0 0 / 20%) 0px 20px 20px;
+  border: ${({ isSelect }) => isSelect ? "2px solid #035afc" : "none"};
 `;
 
 export const Info = styled.div`
-  margin-top: ${({ isClient }) => isClient ? -24 : -30}%;
+  margin-top: ${({ isClient, table }) => isClient && table ? 55 : (!isClient && !table ? 40 : 45)}%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -86,4 +88,19 @@ export const ContainerScroll = styled.div`
   height: 60px;
   width: 100%;
   overflow: auto;
+`;
+
+export const CheckBox = styled.div`
+  width: 20px;
+  height: 20px;
+  border: 1px solid #035afc;
+  background-color: ${({ isSelect }) => isSelect ? "#035afc" : colors.white};
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${colors.white};
+  padding: 3px;
 `;

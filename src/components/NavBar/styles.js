@@ -93,7 +93,7 @@ export const Item = styled.div`
 
 export const Button = styled.button`
   background-color: ${colors.gray[800]};
-  padding: 0.8rem 0.7rem;
+  padding: 0.6rem 0.7rem;
   font-size: 1rem;
   border: none;
   outline: none;
@@ -105,6 +105,10 @@ export const Button = styled.button`
   color: ${colors.white};
   transition: .2s linear;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 
   &:hover {
     background-color: ${colors.gray[500]};

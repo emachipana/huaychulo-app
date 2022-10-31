@@ -1,13 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import { ButtonStyle, Container, ContainerScroll, Description, FlexRow, IconStyle, Info, Name, Photo, Section } from "./styles";
+import { ButtonStyle, CheckBox, Container, ContainerScroll, Description, FlexRow, IconStyle, Info, Name, Photo, Section } from "./styles";
 import { TbCoffee } from "react-icons/tb";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { GiJigsawBox } from "react-icons/gi";
 import { Button } from "reactstrap";
 import { TiEdit } from "react-icons/ti";
 import { HiOutlineTrash } from "react-icons/hi";
+import { BsCheckLg } from "react-icons/bs";
 
-function DishCard({ id, photo, name, isClient, description, quantity, price, waiting, setOpen, setEditableItem }) {
+function DishCard({ id, photo, name, isSelect, isClient, activeSelect, description, quantity, price, waiting, setOpen, setEditableItem, ...other }) {
   const handleEditOpen = () => {
     setOpen(modal => ({...modal, edit: true}));
     setEditableItem({ id: id });
@@ -20,9 +21,29 @@ function DishCard({ id, photo, name, isClient, description, quantity, price, wai
 
   return (
     <Container
+      {...other}
+      isSelect={isSelect}
       isClient={isClient}
     >
-      <Photo 
+      {
+        activeSelect
+        ?
+          <CheckBox 
+            isSelect={isSelect}
+          >
+            {
+              isSelect
+              ?
+                <BsCheckLg />
+              :
+                null
+            }
+          </CheckBox>
+        :
+          null
+      }
+      <Photo
+        isSelect={isSelect}
         src={photo}
         alt="photo-dish"
         />
