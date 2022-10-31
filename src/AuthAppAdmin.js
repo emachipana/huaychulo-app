@@ -6,6 +6,12 @@ import DishesPage from "./pages/admin/dishes";
 import ProfilePage from "./pages/admin/profile";
 import TablesPage from "./pages/admin/tables";
 
+export const Section = styled.section`
+  position: relative;
+  height: 100%;
+  padding: 2rem 1.5rem;
+`;
+
 function AuthAppAdmin() {
   const Container = styled.div`
     display: flex;
@@ -13,11 +19,6 @@ function AuthAppAdmin() {
     width: 100%;
   `;
 
-  const Section = styled.section`
-    position: relative;
-    height: 100%;
-    padding: 2rem 1.5rem;
-  `;
 
   return (
     <div style={{display: "flex"}}>
