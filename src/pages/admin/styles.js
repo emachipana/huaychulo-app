@@ -11,6 +11,7 @@ export const FlexRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
+  gap: 1rem;
   width: 100%;
   margin: 2rem auto;
 `;
@@ -30,9 +31,9 @@ export const Categories = styled.div`
 `;
 
 export const LoaderStyle = css`
-  position: fixed;
-  top: 50%;
-  right: 40%;
+  position: absolute;
+  top: 40%;
+  right: 45%;
 `;
 
 export const Dishes = styled.div`

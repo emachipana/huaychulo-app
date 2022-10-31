@@ -43,7 +43,7 @@ function TableFormModal({ editableItem, tables, onClose, setParent, isOpen, titl
     pavilion: getTable()?.pavilion || "",
     code: getTable()?.code || "",
     chairs: getTable()?.chairs || "",
-    available: getTable()?.available || true
+    available: `${getTable()?.available}` || "true"
   }
 
   const handleSubmit = async (values) => {
@@ -159,7 +159,7 @@ function TableFormModal({ editableItem, tables, onClose, setParent, isOpen, titl
                     handleBlur={handleBlur}
                     error={errors.available}
                     touched={touched.available}
-                    options={[{id: true, name: "Disponible"}, {id: false, name: "Ocupado"}]}
+                    options={[{id: "true", name: "Disponible"}, {id: "false", name: "Ocupado"}]}
                   />
                 :
                   null
