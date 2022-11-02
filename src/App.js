@@ -9,6 +9,7 @@ import MenuPage from "./pages/client/menu";
 import { useState } from "react";
 import ProfilePage from "./pages/admin/profile";
 import HistoryPage from "./pages/client/history";
+import AboutPage from "./pages/client/about";
 
 function App() {
   const { user, isLoading } = useAuth();
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route index path="/" element={<HomePage />} />
             <Route path="/carta" element={<MenuPage setModal={setModal} />} />
+            <Route path="/conocenos" element={<AboutPage />} />
             {
               user
               ?
