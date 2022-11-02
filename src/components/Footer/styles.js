@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   @media screen and (max-width: 1120px) {
     gap: 0;
+    justify-content: start;
   }
 `;
 
