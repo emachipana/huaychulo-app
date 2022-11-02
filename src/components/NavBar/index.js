@@ -62,6 +62,13 @@ function NavBar({ modal, setModal }) {
           name="Carta"
           Icon={IoRestaurantOutline}
         />
+        <NavItem
+          location={location.pathname}
+          navigate={handleOpen}
+          to={"/conocenos"}
+          name="Conócenos"
+          Icon={AiOutlineExclamationCircle}
+        />
         {
           user
           ?
@@ -116,23 +123,14 @@ function NavBar({ modal, setModal }) {
               </UncontrolledPopover>
             </>
           :
-            <>
-              <NavItem
-                location={location.pathname}
-                navigate={handleOpen}
-                to={"/conocenos"}
-                name="Conócenos"
-                Icon={AiOutlineExclamationCircle}
-              />
-              <Button
-                onClick={() => {
-                  setModal(!modal);
-                  setIsOpen(!isOpen);
-                }}
-              >
-                Iniciar sesión
-              </Button>
-            </>
+            <Button
+              onClick={() => {
+                setModal(!modal);
+                setIsOpen(!isOpen);
+              }}
+            >
+              Iniciar sesión
+            </Button>
         }
       </nav>
       <SessionModal 
