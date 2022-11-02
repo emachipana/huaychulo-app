@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import MenuPage from "./pages/client/menu";
 import { useState } from "react";
 import ProfilePage from "./pages/admin/profile";
+import HistoryPage from "./pages/client/history";
 
 function App() {
   const { user, isLoading } = useAuth();
@@ -32,7 +33,10 @@ function App() {
             {
               user
               ?
-              <Route path="/perfil" element={<ProfilePage />} />
+              <>
+                <Route path="/perfil" element={<ProfilePage />} />
+                <Route path="/historial" element={<HistoryPage />} />
+              </>
               :
               null
             }
