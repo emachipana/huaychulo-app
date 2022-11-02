@@ -17,7 +17,7 @@ function NavBarAdmin() {
   useEffect(() => {
     async function fetch(){
       const response = await get("orders");
-      setOrders(response);
+      setOrders(response.filter(order => order.status !== "cancelled"));
     }
 
     fetch();

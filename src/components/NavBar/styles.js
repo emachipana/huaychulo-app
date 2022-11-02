@@ -11,7 +11,7 @@ export const Container = styled.div`
   position: sticky;
   margin-bottom: ${({ location }) => location === "/perfil" ? "2rem" : 0};
   top: 0;
-  padding: 1rem 3rem;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
