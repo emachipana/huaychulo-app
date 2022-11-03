@@ -10,6 +10,7 @@ import { useState } from "react";
 import ProfilePage from "./pages/admin/profile";
 import HistoryPage from "./pages/client/history";
 import AboutPage from "./pages/client/about";
+import NotFoundPage from "./pages/NotFound";
 
 function App() {
   const { user, isLoading } = useAuth();
@@ -42,6 +43,7 @@ function App() {
               :
               null
             }
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
         </>  

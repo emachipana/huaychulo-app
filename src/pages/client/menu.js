@@ -204,38 +204,42 @@ function MenuPage({ setModal }) {
                     </FlexRow>
                     <Dishes>
                       {
-                        selectableMode === "table"
+                        dataDishes.main.length <= 0
                         ?
-                          tables.filter(table => table.available).map(table => (
-                            <TableCard
-                              isClient
-                              onClick={() => setData({...data, table_id: table.id})}
-                              isSelect={data.table_id === table.id}
-                              activeSelect={selectableMode !== "initial"}
-                              key={table.id}
-                              id={table.id}
-                              photo={table.image}
-                              pavilion={table.pavilion}
-                              code={table.code}
-                            />
-                          ))
+                          <h2>Ningún item encontrado</h2>
                         :
-                          dataDishes.main.map(dish => (
-                            <DishCard
-                              onClick={() => handleDishCard(dish.id, dish.name, dish.image, dish.price)}
-                              isSelect={data.items.find(item => item.dish_id === dish.id)}
-                              activeSelect={selectableMode !== "initial"}
-                              isClient
-                              key={dish.id}
-                              id={dish.id}
-                              description={dish.description}
-                              name={dish.name}
-                              photo={dish.image}
-                              price={dish.price}
-                              quantity={dish.quantity}
-                              waiting={dish.waiting_time}
-                            />
-                          ))
+                          selectableMode === "table"
+                          ?
+                            tables.filter(table => table.available).map(table => (
+                              <TableCard
+                                isClient
+                                onClick={() => setData({...data, table_id: table.id})}
+                                isSelect={data.table_id === table.id}
+                                activeSelect={selectableMode !== "initial"}
+                                key={table.id}
+                                id={table.id}
+                                photo={table.image}
+                                pavilion={table.pavilion}
+                                code={table.code}
+                              />
+                            ))
+                          :
+                            dataDishes.main.map(dish => (
+                              <DishCard
+                                onClick={() => handleDishCard(dish.id, dish.name, dish.image, dish.price)}
+                                isSelect={data.items.find(item => item.dish_id === dish.id)}
+                                activeSelect={selectableMode !== "initial"}
+                                isClient
+                                key={dish.id}
+                                id={dish.id}
+                                description={dish.description}
+                                name={dish.name}
+                                photo={dish.image}
+                                price={dish.price}
+                                quantity={dish.quantity}
+                                waiting={dish.waiting_time}
+                              />
+                            ))
                       }
                     </Dishes>
                 </>
