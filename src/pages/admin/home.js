@@ -46,7 +46,7 @@ function HomePage() {
               style={{justifyContent: "center"}}
             >
               <Card
-                to="/ordenes"
+                to="/"
                 color="#321FDB"
                 name="Ingresos"
                 Icon={TbReportMoney}
@@ -67,9 +67,9 @@ function HomePage() {
                 num={data.tables}
               />
               <Card
-                to="/reservas"
+                to="/ordenes"
                 color="#E55353"
-                name="Reservas"
+                name="Ordenes"
                 Icon={TbReportAnalytics}
                 num={data.booking}
               />
