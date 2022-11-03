@@ -84,15 +84,20 @@ export const CountNotifications = styled.span`
 
 export const Notifications = styled.div`
   overflow: auto;
-  width: 200px;
+  width: 220px;
   height: 250px;
-  border-radius: 1rem;
+  border-radius: 1rem 0 0 1rem;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .2);
   background-color: ${colors.white};
   position: fixed;
   top: 70px;
   z-index: 1;
   right: 15%;
+  padding: 1rem 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   transition: .2s linear;
   opacity: ${({ isOpen }) => isOpen ? 1 : 0};
   ${({ isOpen }) => !isOpen ? "pointer-events: none;" : null}
@@ -100,4 +105,27 @@ export const Notifications = styled.div`
   @media screen and (max-width: 520px){
     right: 40%;
   }
+`;
+
+export const NotiSection = styled.section`
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+`;
+
+export const Photo = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+`;
+
+export const Text = styled.span`
+  font-size: 15px;
+`;
+
+export const NotiWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 `;
