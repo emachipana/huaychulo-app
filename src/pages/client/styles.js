@@ -69,3 +69,31 @@ export const Text = styled.p`
   font-size: 1rem;
   font-weight: 500;
 `;
+
+export const NotFoundSection = styled.div`
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const Image = styled.img`
+  height: 250px;
+  object-fit: cover;
+
+  @media screen and (max-width: 530px) {
+    height: 180px;
+  }
+`;
+
+export const NotFoundText = styled.p`
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+
+  @media screen and (max-width: 530px) {
+    font-size: 1.5rem;
+  }
+`;
