@@ -32,7 +32,7 @@ export const Container = styled.aside`
     left:  ${({isOpen}) => isOpen ? "8px" : "-2px"};
   }
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 760px) {
     height: ${({isOpen}) => isOpen ? "100vh" : "60px"};
     width: ${({isOpen}) => isOpen ? "200px" : "70px"};
     position: fixed;
@@ -87,7 +87,7 @@ export const NavSection = styled.section`
   font-weight: 600;
   font-size: 17px;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 760px) {
     font-size: 15px;
   }
 `;
@@ -96,7 +96,7 @@ export const IconStyle = css`
   font-size: 20px;
   position: relative;
   top: -2px;
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 760px) {
     font-size: 18px;
   }
 `;
@@ -119,7 +119,7 @@ export const Backdrop = styled.div`
   transition: .4s linear;
   pointer-events: none;
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 760px) {
     opacity: ${({ isOpen }) => isOpen ? 1 : 0};
     pointer-events: ${({ isOpen }) => isOpen ? "auto" : "none"};
   }

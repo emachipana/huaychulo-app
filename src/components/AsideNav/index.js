@@ -67,9 +67,9 @@ function AsideNav() {
         <NavItem
           setIsOpen={setIsOpen} 
           Icon={GoCalendar}
-          name="Reservaciones"
+          name="Reservas"
           navigate={navigate}
-          to="/reservaciones"
+          to="/reservas"
         />
         <Hr />
         <Title>Gestionar</Title>
