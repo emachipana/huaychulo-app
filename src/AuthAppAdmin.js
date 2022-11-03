@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import AsideNav from "./components/AsideNav";
 import NavBarAdmin from "./components/NavBarAdmin";
 import DishesPage from "./pages/admin/dishes";
+import HomePage from "./pages/admin/home";
 import ProfilePage from "./pages/admin/profile";
 import TablesPage from "./pages/admin/tables";
 
@@ -27,7 +28,7 @@ function AuthAppAdmin() {
         <NavBarAdmin />
         <Section>
           <Routes>
-            <Route index path="/" element={<h1>Hola desde admin</h1>} />
+            <Route index path="/" element={<HomePage />} />
             <Route path="/platillos" element={<DishesPage /> } />
             <Route path="/mesas" element={<TablesPage /> } />
             <Route path="/perfil" element={<ProfilePage />} />

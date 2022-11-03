@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
-import { Container, CountNotifications, IconContainer, IconStyle, Notifications, ProfileContainer, ProfilePhoto } from "./styles";
+import { Container, CountNotifications, IconContainer, IconStyle, Notifications, NotiSection, NotiWrapper, Photo, ProfileContainer, ProfilePhoto, Text } from "./styles";
 import { IoMail, IoNotifications } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import { Tooltip } from "reactstrap";
+import { Toast, ToastBody, Tooltip } from "reactstrap";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import { get } from "../../services";
@@ -17,11 +17,11 @@ function NavBarAdmin() {
   useEffect(() => {
     async function fetch(){
       const response = await get("orders");
-      setOrders(response.filter(order => order.status !== "cancelled"));
+      setOrders(response.filter(order => order.status === "pending"));
     }
 
     fetch();
-  }, [])
+  }, []);
 
   return (
     <>
@@ -82,7 +82,27 @@ function NavBarAdmin() {
       <Notifications
         isOpen={notiOpen}
       >
-
+        {
+          orders.map(order => (
+            <Toast
+              key={order.id}
+              onClick={() => navigate("/ordenes")}
+              style={{cursor: "pointer"}}
+            >
+              <ToastBody>
+                <NotiSection>
+                  <Photo 
+                    src={order.items[0].dish.image}
+                  />
+                  <NotiWrapper>
+                    <Text>Nueva orden</Text>
+                    <Text>Total: S/. {order.total}.00</Text>
+                  </NotiWrapper>
+                </NotiSection>
+              </ToastBody>
+            </Toast>
+          ))
+        }
       </Notifications>
     </>
   );
