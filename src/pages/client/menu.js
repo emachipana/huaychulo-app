@@ -11,13 +11,15 @@ import { colors } from "../../styles";
 import DishCard from "../../components/DishCard";
 import TableCard from "../../components/TableCard";
 import OrderComplete from "../../components/OrderComplete";
+import { useLocation } from "react-router-dom";
 
 function MenuPage({ setModal }) {
+  const params = useLocation();
   const { user, setError, setUser } = useAuth();
   const [categories, setCategories] = useState([]);
   const [dataDishes, setDataDishes] = useState({ main: [], backup: [] });
   const [tables, setTables] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState("Todos");
+  const [currentCategory, setCurrentCategory] = useState(params.search || "Todos");
   const [isLoading, setIsLoading] = useState(true);
   const [selectableMode, setSelectableMode] = useState("initial");
   const [data, setData] = useState({items: []});
@@ -76,14 +78,18 @@ function MenuPage({ setModal }) {
   useEffect(() => {
     async function fetch() {
       const catResponse = await get("categories");
-      const dishResponse = await get("dishes");
+      let dishResponse = await get("dishes");
+      setDataDishes({ main: [], backup: dishResponse });
+      if(params.search) {
+        dishResponse = dishResponse.filter(dish => dish.name.toLowerCase().includes(params.search.split("=")[1]));
+      }
+      setDataDishes(dishes => ({...dishes, main: dishResponse}));
       setCategories(catResponse);
-      setDataDishes({ main: dishResponse, backup: dishResponse });
       setTimeout(() => setIsLoading(false), 500);
     }
 
     fetch();
-  }, []);
+  }, [params]);
 
   return (
     <Section
