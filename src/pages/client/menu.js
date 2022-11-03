@@ -218,6 +218,7 @@ function MenuPage({ setModal }) {
                                 activeSelect={selectableMode !== "initial"}
                                 key={table.id}
                                 id={table.id}
+                                chairs={table.chairs}
                                 photo={table.image}
                                 pavilion={table.pavilion}
                                 code={table.code}
