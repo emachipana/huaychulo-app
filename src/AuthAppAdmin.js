@@ -4,6 +4,7 @@ import AsideNav from "./components/AsideNav";
 import NavBarAdmin from "./components/NavBarAdmin";
 import DishesPage from "./pages/admin/dishes";
 import HomePage from "./pages/admin/home";
+import OrdersPage from "./pages/admin/orders";
 import ProfilePage from "./pages/admin/profile";
 import TablesPage from "./pages/admin/tables";
 
@@ -32,6 +33,7 @@ function AuthAppAdmin() {
             <Route path="/platillos" element={<DishesPage /> } />
             <Route path="/mesas" element={<TablesPage /> } />
             <Route path="/perfil" element={<ProfilePage />} />
+            <Route path="/ordenes" element={<OrdersPage />} />
           </Routes>
         </Section>
       </Container>
