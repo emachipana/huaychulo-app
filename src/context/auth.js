@@ -29,6 +29,7 @@ function AuthProvider({ children }) {
     try {
       const response = await session.login(credentials);
       setUser(response);
+      if(response.user_type === "admin") navigate("/");
       return response;
     }catch(e) {
       setError(e.message);
