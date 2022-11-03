@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import { colors } from "../../styles";
 
 export const Title = styled.h1`
   text-align: center;
@@ -45,4 +46,18 @@ export const Dishes = styled.div`
   gap: 2rem;
   flex-wrap: wrap;
   padding: 1rem;
+`;
+
+export const Orders = styled.div`
+  background-color: ${colors.white};
+  width: 100%;
+  padding: 1rem;
+  margin: 2rem auto;
+  border-radius: 1rem;
+`;
+
+export const Text = styled.p`
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
 `;
