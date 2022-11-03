@@ -86,8 +86,7 @@ function NavBarAdmin() {
           orders.map(order => (
             <Toast
               key={order.id}
-              onClick={() => navigate("/ordenes")}
-              style={{cursor: "pointer"}}
+              style={{cursor: "pointer", pointerEvents: "none"}}
             >
               <ToastBody>
                 <NotiSection>
